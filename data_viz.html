@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Data Visualization Playground</title>
+    <link rel="stylesheet" href="data_viz.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="index.html">← Back to Portfolio</a>
+                </div>
+                <div class="nav-title">📊 Data Visualization Playground</div>
+            </div>
+        </nav>
+
+        <div class="viz-container">
+            <!-- Header -->
+            <div class="viz-header">
+                <div class="header-content">
+                    <h1>📊 Dynamic Data Visualization Playground</h1>
+                    <p>Create stunning visualizations from your data - Upload CSV files or generate sample datasets</p>
+                </div>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="controls-section">
+                <div class="control-panel">
+                    <h2>🎛️ Data Controls</h2>
+                    
+                    <!-- Data Upload -->
+                    <div class="control-group">
+                        <label for="dataUpload">Upload CSV File:</label>
+                        <input type="file" id="dataUpload" accept=".csv" onchange="handleFileUpload(event)">
+                    </div>
+                    
+                    <!-- Sample Data Generation -->
+                    <div class="control-group">
+                        <label>Generate Sample Data:</label>
+                        <div class="sample-buttons">
+                            <button class="sample-btn" onclick="generateSampleData('sales')">📈 Sales Data</button>
+                            <button class="sample-btn" onclick="generateSampleData('scatter')">🔹 Scatter Plot</button>
+                            <button class="sample-btn" onclick="generateSampleData('heatmap')">🔥 Heatmap</button>
+                            <button class="sample-btn" onclick="generateSampleData('random')">🎲 Random Data</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart Type Selection -->
+                    <div class="control-group">
+                        <label for="chartType">Visualization Type:</label>
+                        <select id="chartType" onchange="updateVisualization()">
+                            <option value="bar">📊 Bar Chart</option>
+                            <option value="line">📈 Line Chart</option>
+                            <option value="scatter">🔹 Scatter Plot</option>
+                            <option value="pie">🥧 Pie Chart</option>
+                            <option value="radar">🕸️ Radar Chart</option>
+                            <option value="doughnut">🍩 Doughnut Chart</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Animation Controls -->
+                    <div class="control-group">
+                        <label>Animation Settings:</label>
+                        <div class="animation-controls">
+                            <button class="control-btn" onclick="animateChart()">🎬 Animate</button>
+                            <button class="control-btn" onclick="exportChart()">💾 Export PNG</button>
+                            <button class="control-btn" onclick="randomizeColors()">🎨 Random Colors</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualization Area -->
+            <div class="viz-area">
+                <div class="chart-container">
+                    <canvas id="mainChart"></canvas>
+                </div>
+                
+                <div class="chart-info">
+                    <h3>📋 Data Summary</h3>
+                    <div id="dataSummary">
+                        <p>Upload data or generate sample dataset to see visualization</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Insights Section -->
+            <div class="insights-section">
+                <h2>🤖 AI Data Insights</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>📊 Statistical Analysis</h3>
+                        <div id="statsInsights">
+                            <p>No data loaded yet</p>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <h3>💡 Recommendations</h3>
+                        <div id="recommendations">
+                            <p>Upload data to get AI recommendations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-card">
+                        <h3>🔍 Pattern Detection</h3>
+                        <div id="patterns">
+                            <p>Analyzing patterns in your data...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multiple Charts Section -->
+            <div class="multi-charts">
+                <h2>📈 Multiple Perspectives</h2>
+                <div class="charts-grid">
+                    <div class="mini-chart">
+                        <h4>Bar View</h4>
+                        <canvas id="barChart"></canvas>
+                    </div>
+                    <div class="mini-chart">
+                        <h4>Line Trend</h4>
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                    <div class="mini-chart">
+                        <h4>Distribution</h4>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="data-table-section">
+                <h2>📋 Raw Data View</h2>
+                <div class="table-container">
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>No data loaded</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Upload or generate data to view table</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p>Processing your data...</p>
+        </div>
+
+        <!-- Success Toast -->
+        <div class="success-toast" id="successToast">
+            <div class="toast-content">
+                <span class="toast-icon">✅</span>
+                <span class="toast-message">Visualization created successfully!</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="data_viz.js"></script>
+</body>
+</html>

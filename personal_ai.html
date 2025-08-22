@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal AI Assistant - Syed Shahmeer Ali</title>
+    <link rel="stylesheet" href="personal_ai.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="index.html">← Back to Portfolio</a>
+                </div>
+                <div class="nav-title">👨‍💻 Personal AI Assistant</div>
+            </div>
+        </nav>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="assistant-details">
+                    <div class="assistant-avatar">👨‍💻</div>
+                    <div class="assistant-info">
+                        <h1>Syed Shahmeer Ali AI</h1>
+                        <p class="assistant-subtitle">Ask me anything about my background, skills, and experience!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message assistant-message">
+                    <div class="message-avatar">👨‍💻</div>
+                    <div class="message-content">
+                        <p>Hi there! I'm Syed Shahmeer Ali, an AI Engineer passionate about building complete AI-powered products. Feel free to ask me anything about my background, experience, skills, or projects!</p>
+                        <p>I'm here to answer questions recruiters and colleagues might have about my expertise in AI/ML, web development, and project experience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="suggested-questions">
+                <h3>💡 Suggested Questions:</h3>
+                <div class="questions-grid">
+                    <button class="question-btn" onclick="sendSuggestedQuestion('Tell me about your AI/ML experience')">
+                        Tell me about your AI/ML experience
+                    </button>
+                    <button class="question-btn" onclick="sendSuggestedQuestion('What projects have you worked on?')">
+                        What projects have you worked on?
+                    </button>
+                    <button class="question-btn" onclick="sendSuggestedQuestion('What are your technical skills?')">
+                        What are your technical skills?
+                    </button>
+                    <button class="question-btn" onclick="sendSuggestedQuestion('Why should we hire you?')">
+                        Why should we hire you?
+                    </button>
+                    <button class="question-btn" onclick="sendSuggestedQuestion('What makes you different from other AI engineers?')">
+                        What makes you different?
+                    </button>
+                    <button class="question-btn" onclick="sendSuggestedQuestion('Tell me about your education background')">
+                        Education background
+                    </button>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-group">
+                    <input type="text" id="messageInput" placeholder="Ask me anything about my background and experience..." maxlength="500">
+                    <button id="sendButton" onclick="sendMessage()">
+                        <span>💬</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Key Input Modal -->
+        <div class="api-key-modal" id="apiKeyModal">
+            <div class="modal-content">
+                <h2>🔑 Google Gemini API Key Required</h2>
+                <p>To use this AI assistant, please enter your Google Gemini API key:</p>
+                <div class="input-group">
+                    <input type="password" id="apiKeyInput" placeholder="Enter your Gemini API key...">
+                    <button onclick="saveApiKey()">Save</button>
+                </div>
+                <p class="api-info">
+                    <small>
+                        📝 Get your free API key from: <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a><br>
+                        🔒 Your API key is stored locally and never sent to any server except Google's Gemini API.
+                    </small>
+                </p>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p>Thinking...</p>
+        </div>
+    </div>
+
+    <script src="personal_ai.js"></script>
+</body>
+</html>

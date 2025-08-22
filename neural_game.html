@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Learning Game - Build & Learn!</title>
+    <link rel="stylesheet" href="neural_game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="index.html">← Back to Portfolio</a>
+                </div>
+                <div class="nav-title">🧠 Neural Network Learning Game</div>
+            </div>
+        </nav>
+
+        <div class="game-container">
+            <!-- Game Header -->
+            <div class="game-header">
+                <div class="game-title">
+                    <h1>🐍 Neural Snake Game!</h1>
+                    <p>Play Snake while learning neural networks - Each food eaten adds layers and makes your AI snake smarter!</p>
+                </div>
+                <div class="game-stats">
+                    <div class="stat">
+                        <span class="stat-label">Score</span>
+                        <span class="stat-value" id="gameScore">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Network Layers</span>
+                        <span class="stat-value" id="networkLayers">1</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">AI Intelligence</span>
+                        <span class="stat-value" id="aiIntelligence">Basic</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Content -->
+            <div class="game-content">
+                <!-- Snake Game Section -->
+                <div class="section snake-game">
+                    <h2>🐍 Neural Snake Game</h2>
+                    <div class="game-controls">
+                        <button class="game-btn success" onclick="startGame()" id="startBtn">
+                            🎮 Start Game
+                        </button>
+                        <button class="game-btn warning" onclick="pauseGame()" id="pauseBtn">
+                            ⏸️ Pause
+                        </button>
+                        <button class="game-btn secondary" onclick="resetGame()">
+                            🔄 Reset
+                        </button>
+                    </div>
+                    
+                    <!-- Game Canvas -->
+                    <div class="game-area">
+                        <canvas id="gameCanvas" width="500" height="500"></canvas>
+                        <div class="game-instructions">
+                            <p><strong>How to Play:</strong></p>
+                            <p>🏃 Use arrow keys to move your neural snake</p>
+                            <p>🍎 Eat food to grow and add neural network layers</p>
+                            <p>🧠 Watch your AI get smarter with each layer!</p>
+                            <p>⚠️ Don't hit walls or yourself!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Status Section -->
+                <div class="section network-status">
+                    <h2>🧠 Neural Network Status</h2>
+                    <div class="network-info">
+                        <div class="current-architecture" id="currentArchitecture">
+                            <h3>Current Architecture:</h3>
+                            <div class="architecture-display">
+                                <div class="layer-item">Input Layer (4 neurons)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-capabilities">
+                            <h3>AI Capabilities:</h3>
+                            <ul id="capabilitiesList">
+                                <li>Basic movement detection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Section -->
+                <div class="section quiz-section">
+                    <h2>🧩 Knowledge Quiz</h2>
+                    <div class="quiz-container" id="quizContainer">
+                        <div class="quiz-question" id="quizQuestion">
+                            What is the most common activation function in hidden layers?
+                        </div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" onclick="answerQuiz('activation_1', 'relu')">ReLU</button>
+                            <button class="quiz-option" onclick="answerQuiz('activation_1', 'sigmoid')">Sigmoid</button>
+                            <button class="quiz-option" onclick="answerQuiz('activation_1', 'tanh')">Tanh</button>
+                            <button class="quiz-option" onclick="answerQuiz('activation_1', 'linear')">Linear</button>
+                        </div>
+                    </div>
+                    <button class="game-btn info" onclick="nextQuiz()">
+                        🔄 Next Question
+                    </button>
+                </div>
+            </div>
+
+            <!-- Learning Tips Section -->
+            <div class="learning-tips">
+                <h3>💡 Learning Tips</h3>
+                <div class="tip-content" id="learningTip">
+                    Welcome to the Neural Network Learning Game! Start by adding layers to build your first network.
+                </div>
+            </div>
+
+            <!-- Achievement Toast -->
+            <div class="achievement-toast" id="achievementToast">
+                <div class="achievement-icon">🎉</div>
+                <div class="achievement-text">
+                    <div class="achievement-title">Achievement Unlocked!</div>
+                    <div class="achievement-desc" id="achievementDesc">First layer added!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="neural_game.js"></script>
+</body>
+</html>
