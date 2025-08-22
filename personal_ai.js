@@ -234,21 +234,17 @@ class PersonalAI {
     }
 }
 
-// Global functions for HTML onclick events
+// Global variable for the AI instance
 let personalAI;
 
+// Global functions for HTML onclick events
 function sendSuggestedQuestion(question) {
     personalAI.sendSuggestedQuestion(question);
 }
 
-
-
 function sendMessage() {
     personalAI.sendMessage();
 }
-
-// Initialize immediately for faster loading
-let personalAI;
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -264,5 +260,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0);
     }
 });
-
-
