@@ -513,10 +513,21 @@ function randomizeColors() {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    playground = new DataVisualizationPlayground();
-    
-    // Generate initial sample data
-    setTimeout(() => {
-        playground.generateSampleData('sales');
-    }, 1000);
+    // Use requestIdleCallback for non-critical initialization
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            playground = new DataVisualizationPlayground();
+            
+            // Generate initial sample data immediately
+            playground.generateSampleData('sales');
+        });
+    } else {
+        // Fallback for older browsers
+        setTimeout(() => {
+            playground = new DataVisualizationPlayground();
+            
+            // Generate initial sample data immediately
+            playground.generateSampleData('sales');
+        }, 0);
+    }
 });

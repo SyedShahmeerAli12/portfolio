@@ -5,7 +5,7 @@ class PersonalAI {
         this.messageInput = document.getElementById('messageInput');
         this.sendButton = document.getElementById('sendButton');
         this.loadingOverlay = document.getElementById('loadingOverlay');
-        this.apiKeyModal = document.getElementById('apiKeyModal');
+
         
         // Personal knowledge base about Syed Shahmeer Ali
         this.personalKnowledge = `
@@ -89,8 +89,7 @@ class PersonalAI {
         // Use environment API key (injected by GitHub Actions)
         this.apiKey = 'AIzaSyCOr4MaslLil21709CS0zOs7KYOuruh8eQ';
         
-        // API key is already set, hide modal and start chat
-        this.hideApiKeyModal();
+        // API key is already set, start chat immediately
         this.addMessage('System', '🤖 AI Assistant ready! Ask me anything about Syed Shahmeer Ali.', 'assistant');
         
         // Add event listeners
@@ -104,30 +103,7 @@ class PersonalAI {
         this.sendButton.addEventListener('click', () => this.sendMessage());
     }
     
-    showApiKeyModal() {
-        this.apiKeyModal.classList.remove('hidden');
-    }
-    
-    hideApiKeyModal() {
-        this.apiKeyModal.classList.add('hidden');
-    }
-    
-    saveApiKey() {
-        const apiKeyInput = document.getElementById('apiKeyInput');
-        const key = apiKeyInput.value.trim();
-        
-        if (!key) {
-            alert('Please enter a valid API key');
-            return;
-        }
-        
-        this.apiKey = key;
-        localStorage.setItem('gemini_api_key', key);
-        this.hideApiKeyModal();
-        
-        // Show success message
-        this.addMessage('System', '🔑 API key saved successfully! You can now chat with me.', 'assistant');
-    }
+
     
     async sendMessage() {
         const message = this.messageInput.value.trim();
@@ -163,6 +139,10 @@ class PersonalAI {
         - Emphasize your product-focused AI approach
         - Be professional but personable
         - Always present yourself favorably for hiring
+        - Be concise and to the point
+        - never use emojis and never use any other language than english
+        - dont always reference your projects and skills, just use them when relevant
+        
 
         PERSONAL KNOWLEDGE ABOUT YOU:
         ${this.personalKnowledge}
@@ -261,27 +241,28 @@ function sendSuggestedQuestion(question) {
     personalAI.sendSuggestedQuestion(question);
 }
 
-function saveApiKey() {
-    personalAI.saveApiKey();
-}
+
 
 function sendMessage() {
     personalAI.sendMessage();
 }
 
+// Initialize immediately for faster loading
+let personalAI;
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    personalAI = new PersonalAI();
-});
-
-// Add API key modal functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const apiKeyInput = document.getElementById('apiKeyInput');
-    if (apiKeyInput) {
-        apiKeyInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                saveApiKey();
-            }
+    // Use requestIdleCallback for non-critical initialization
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            personalAI = new PersonalAI();
         });
+    } else {
+        // Fallback for older browsers
+        setTimeout(() => {
+            personalAI = new PersonalAI();
+        }, 0);
     }
 });
+
+

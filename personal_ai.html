@@ -75,23 +75,7 @@
             </div>
         </div>
 
-        <!-- API Key Input Modal -->
-        <div class="api-key-modal" id="apiKeyModal">
-            <div class="modal-content">
-                <h2>🔑 Google Gemini API Key Required</h2>
-                <p>To use this AI assistant, please enter your Google Gemini API key:</p>
-                <div class="input-group">
-                    <input type="password" id="apiKeyInput" placeholder="Enter your Gemini API key...">
-                    <button onclick="saveApiKey()">Save</button>
-                </div>
-                <p class="api-info">
-                    <small>
-                        📝 Get your free API key from: <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a><br>
-                        🔒 Your API key is stored locally and never sent to any server except Google's Gemini API.
-                    </small>
-                </p>
-            </div>
-        </div>
+
 
         <!-- Loading Overlay -->
         <div class="loading-overlay" id="loadingOverlay">
@@ -100,6 +84,6 @@
         </div>
     </div>
 
-    <script src="personal_ai.js"></script>
+    <script src="personal_ai.js" defer></script>
 </body>
 </html>

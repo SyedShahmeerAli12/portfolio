@@ -251,90 +251,7 @@ body {
     cursor: not-allowed;
 }
 
-/* API Key Modal */
-.api-key-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
 
-.api-key-modal.hidden {
-    display: none;
-}
-
-.modal-content {
-    background: #1e293b;
-    padding: 2rem;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-    border: 1px solid rgba(71, 85, 105, 0.3);
-}
-
-.modal-content h2 {
-    margin-bottom: 1rem;
-    color: #06b6d4;
-}
-
-.modal-content p {
-    margin-bottom: 1.5rem;
-    color: #e2e8f0;
-    line-height: 1.6;
-}
-
-.modal-content .input-group {
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.modal-content #apiKeyInput {
-    background: rgba(30, 41, 59, 0.9);
-    border: 1px solid rgba(71, 85, 105, 0.4);
-    color: #e2e8f0;
-    padding: 1rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    outline: none;
-    width: 300px;
-}
-
-.modal-content button {
-    background: #06b6d4;
-    border: none;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.modal-content button:hover {
-    opacity: 0.9;
-}
-
-.api-info {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    line-height: 1.5;
-}
-
-.api-info a {
-    color: #06b6d4;
-    text-decoration: none;
-}
-
-.api-info a:hover {
-    text-decoration: underline;
-}
 
 /* Loading Overlay */
 .loading-overlay {
@@ -421,13 +338,7 @@ body {
         max-width: 85%;
     }
     
-    .modal-content {
-        padding: 1.5rem;
-    }
-    
-    .modal-content #apiKeyInput {
-        width: 100%;
-    }
+
 }
 
 /* Animation for new messages */

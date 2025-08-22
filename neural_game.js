@@ -441,5 +441,15 @@ function answerQuiz(questionId, answer) {
 
 // Initialize game when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    game = new NeuralSnakeGame();
+    // Use requestIdleCallback for non-critical game initialization
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+            game = new NeuralSnakeGame();
+        });
+    } else {
+        // Fallback for older browsers
+        setTimeout(() => {
+            game = new NeuralSnakeGame();
+        }, 0);
+    }
 });
