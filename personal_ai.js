@@ -87,10 +87,10 @@ class PersonalAI {
     
     initializeChat() {
         // Use environment API key (injected by GitHub Actions)
-        this.apiKey = 'YOUR_GEMINI_API_KEY_PLACEHOLDER';
+        this.apiKey = 'AIzaSyCOr4MaslLil21709CS0zOs7KYOuruh8eQ';
         
         // If API key is set (not placeholder), hide modal
-        if (this.apiKey && this.apiKey !== 'YOUR_GEMINI_API_KEY_PLACEHOLDER') {
+        if (this.apiKey && this.apiKey !== 'AIzaSyCOr4MaslLil21709CS0zOs7KYOuruh8eQ') {
             this.hideApiKeyModal();
             this.addMessage('System', '🤖 AI Assistant ready! Ask me anything about Syed Shahmeer Ali.', 'assistant');
         } else {
