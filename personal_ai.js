@@ -89,20 +89,9 @@ class PersonalAI {
         // Use environment API key (injected by GitHub Actions)
         this.apiKey = 'AIzaSyCOr4MaslLil21709CS0zOs7KYOuruh8eQ';
         
-        // If API key is set (not placeholder), hide modal
-        if (this.apiKey && this.apiKey !== 'AIzaSyCOr4MaslLil21709CS0zOs7KYOuruh8eQ') {
-            this.hideApiKeyModal();
-            this.addMessage('System', '🤖 AI Assistant ready! Ask me anything about Syed Shahmeer Ali.', 'assistant');
-        } else {
-            // Fallback to manual API key entry for local development
-            const storedApiKey = localStorage.getItem('gemini_api_key');
-            if (storedApiKey) {
-                this.apiKey = storedApiKey;
-                this.hideApiKeyModal();
-            } else {
-                this.showApiKeyModal();
-            }
-        }
+        // API key is already set, hide modal and start chat
+        this.hideApiKeyModal();
+        this.addMessage('System', '🤖 AI Assistant ready! Ask me anything about Syed Shahmeer Ali.', 'assistant');
         
         // Add event listeners
         this.messageInput.addEventListener('keypress', (e) => {
